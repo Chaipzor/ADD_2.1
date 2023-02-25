@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dam2.add.p21.dao.UsuarioDAO_OLD;
+import dam2.add.p21.dao.UsuarioDAOMemoria;
+import dam2.add.p21.resourcebundle.MiResourceBundle;
 import dam2.add.p21.servicios.UsuarioService;
 
 /**
@@ -49,24 +50,26 @@ public class LoginController extends HttpServlet {
 		// Obtenemos los datos del login
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
+		
 		// Comprobamos los datos
-		int comprobacion = new UsuarioService().comprobarDatos(email, pass);
+		int posicion = UsuarioService.comprobarDatos(email, pass);
 		// Usuario no existe.
-		if (comprobacion == -1) {
+		if (posicion == -1) {
 			texto = "El email no está dado de alta.";
 			referencia = "/jsp/registro.jsp";
 		} // Contraseña incorrecta.
-		else if (comprobacion == -2) {
+		else if (posicion == -2) {
 			texto = "Contraseña incorrecta. Vuelva a intentarlo.";
 			repetir = true;
 			referencia = "/jsp/login.jsp";
 		} // Login correcto
 		else {
-			String nombre = UsuarioDAO_OLD.getListaUsuarios().get(comprobacion).getNombre();
+			String nombre = UsuarioService.obtenerTodos().get(posicion).getNombre();
 			request.getSession().setAttribute("nombresesion", nombre);
-			request.getSession().setAttribute("id", comprobacion);
-			String admin = String.valueOf(UsuarioDAO_OLD.getListaUsuarios().get(comprobacion).isRol_admin());
+			request.getSession().setAttribute("id", UsuarioService.obtenerTodos().get(posicion).getId());
+			String admin = String.valueOf(UsuarioService.obtenerTodos().get(posicion).isRol_admin());
 			request.getSession().setAttribute("admin", admin);
+			MiResourceBundle.idiomaActivo(UsuarioService.obtenerTodos().get(posicion).getIdioma());
 		}
 
 		request.setAttribute("repetir", repetir);

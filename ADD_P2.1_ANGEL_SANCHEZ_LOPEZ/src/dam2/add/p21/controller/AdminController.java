@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dam2.add.p21.dao.UsuarioDAO_OLD;
+import dam2.add.p21.dao.UsuarioDAOMemoria;
 import dam2.add.p21.model.Usuario;
 import dam2.add.p21.servicios.UsuarioService;
 
@@ -35,43 +35,43 @@ public class AdminController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<Usuario> listaContactos = UsuarioDAO_OLD.getListaUsuarios();
 		String referencia = "./jsp/index.jsp";
-		int posicion = -1;
+		Usuario usuario = null;
 
 		// Si se quiere eliminar un usuario
 		if (request.getParameter("del") != null) {
 			// Busca la posición en el array del usuario "id".
 			int id = Integer.parseInt(request.getParameter("del"));
-			posicion = new UsuarioService().buscarUsuario(id);
 
-			if (posicion != -1) {
+			usuario = UsuarioService.obtener(id);
+
+			if (usuario != null) {
 				// Si existe el usuario lo elimina.
-				UsuarioDAO_OLD.deleteUser(posicion);
+				UsuarioService.eliminar(usuario.getId());
 			}
+
 			// Si se quiere editar un usuario
 		} else if (request.getParameter("edit") != null) {
 			int id = Integer.parseInt(request.getParameter("edit"));
-			posicion = new UsuarioService().buscarUsuario(id);
+			usuario = UsuarioService.obtener(id);
 
-			if (posicion != -1) {
+			if (usuario != null) {
 				// Seteamos los atributos para que aparezcan rellenos en la vista del perfil del
 				// usuario seleccionado
 				referencia = "./jsp/perfil_editable.jsp";
-				request.setAttribute("nombre", UsuarioDAO_OLD.getListaUsuarios().get(posicion).getNombre());
-				request.setAttribute("apellidos", UsuarioDAO_OLD.getListaUsuarios().get(posicion).getApellidos());
-				request.setAttribute("email", UsuarioDAO_OLD.getListaUsuarios().get(posicion).getEmail());
-				String telefono = String.valueOf(UsuarioDAO_OLD.getListaUsuarios().get(posicion).getTelefono());
+				request.setAttribute("nombre", usuario.getNombre());
+				request.setAttribute("apellidos", usuario.getApellidos());
+				request.setAttribute("email", usuario.getEmail());
+				String telefono = String.valueOf(usuario.getTelefono());
 				request.setAttribute("telefono", telefono);
 				request.getSession().setAttribute("editid", id);
 				request.getSession().setAttribute("emailsesion",
-						UsuarioDAO_OLD.getListaUsuarios().get(posicion).getEmail());
+						usuario.getEmail());
 			}
 
 		}
 		// Actualizamos la lista de contactos de la sesión
-		listaContactos = UsuarioDAO_OLD.getListaUsuariosNoAdmin();
-		request.getSession().setAttribute("listaContactos", listaContactos);
+		request.getSession().setAttribute("listaContactos", UsuarioService.obtenerTodosSinAdmin());
 		request.getRequestDispatcher(referencia).forward(request, response);
 	}
 

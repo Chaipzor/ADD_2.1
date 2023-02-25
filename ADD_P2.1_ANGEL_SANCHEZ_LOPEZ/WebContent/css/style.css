@@ -45,6 +45,11 @@ body {
 	width: 100%;
 }
 
+.bandera img {
+	height: 80px;
+	width: 50px;
+}
+
 .menu-botones {
 	display: flex;
 	justify-content: space-between;

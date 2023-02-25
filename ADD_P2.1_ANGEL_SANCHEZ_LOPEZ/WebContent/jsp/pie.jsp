@@ -1,49 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="dam2.add.p21.resourcebundle.MiResourceBundle"%>
 <footer>
 
 	<div class="container-footer-top">
 
 		<div class="columna1">
-			<h1>Información adicional</h1>
+			<h1>
+				<%
+					out.println(MiResourceBundle.traductor("informacionAdicional"));
+				%>
+			</h1>
 
-			<p>Envíos gratuitos en pedidos superiores a 25€.</p>
+			<p>
+				<%
+					out.println(MiResourceBundle.traductor("textoEnvios"));
+				%>
+			</p>
 
 		</div>
 
 		<div class="columna2">
 
-			<h1>Redes Sociales</h1>
+			<h1>
+				<%
+					out.println(MiResourceBundle.traductor("redes"));
+				%>
+			</h1>
 
 			<div class="fila">
 				<a href="https://www.facebook.com/" target="_blank"><img
 					src="${pageContext.request.contextPath}/img/rrss/facebook.png"></a>
-				<label>Síguenos en Facebook</label>
+				<label>
+					<%
+						out.println(MiResourceBundle.traductor("facebook"));
+					%>
+				</label>
 			</div>
 
 			<div class="fila">
 				<a href="https://twitter.com/home" target="_blank"><img
 					src="${pageContext.request.contextPath}/img/rrss/gorjeo.png"></a>
-				<label>Síguenos en Twitter</label>
+				<label>
+					<%
+						out.println(MiResourceBundle.traductor("twitter"));
+					%>
+				</label>
 			</div>
 
 			<div class="fila">
 				<a href="https://www.instagram.com/?hl=es" target="_blank"><img
 					src="${pageContext.request.contextPath}/img/rrss/instagram.png"></a>
-				<label>Síguenos en Instagram</label>
+				<label>
+					<%
+						out.println(MiResourceBundle.traductor("instagram"));
+					%>
+				</label>
 			</div>
 
 			<div class="fila">
 				<a href="https://www.youtube.com/" target="_blank"><img
 					src="${pageContext.request.contextPath}/img/rrss/youtube.png"></a>
-				<label>Síguenos en Youtube</label>
+				<label>
+					<%
+						out.println(MiResourceBundle.traductor("youtube"));
+					%>
+				</label>
 			</div>
 
 		</div>
 
 		<div class="columna3">
 
-			<h1>Información de contacto</h1>
+			<h1>
+				<%
+					out.println(MiResourceBundle.traductor("informacionContacto"));
+				%>
+			</h1>
 
 			<div class="fila2">
 				<a
@@ -74,14 +108,28 @@
 		<div class="footer">
 
 			<div class="copyright">
-				© 2022 Todos los derechos reservados | <a
+				<%
+					out.println(MiResourceBundle.traductor("derechos"));
+				%>
+				| <a
 					href="https://www.linkedin.com/in/%C3%A1ngel-s%C3%A1nchez-l%C3%B3pez-98238723/">Ángel
 					Sánchez</a>
 			</div>
 
 			<div class="informacion">
-				<a href="">Condiciones generales</a> | <a href="">Política de
-					privacidad</a> | <a href="">Política de cookies</a>
+				<a href="">
+					<%
+						out.println(MiResourceBundle.traductor("condicionesGenerales"));
+					%>
+				</a> | <a href="">
+					<%
+						out.println(MiResourceBundle.traductor("privacidad"));
+					%>
+				</a> | <a href="">
+					<%
+						out.println(MiResourceBundle.traductor("cookies"));
+					%>
+				</a>
 			</div>
 
 		</div>

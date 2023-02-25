@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dam2.add.p21.dao.UsuarioDAO_OLD;
+import dam2.add.p21.dao.UsuarioDAOMemoria;
 import dam2.add.p21.model.Usuario;
 import dam2.add.p21.servicios.UsuarioService;
 
@@ -62,28 +62,29 @@ public class EditarDatosController extends HttpServlet {
 			// cualquier usuario
 			id = (Integer) request.getSession().getAttribute("id");
 		}
-
-		int posicion = new UsuarioService().buscarUsuario(id);
-
+		Usuario usuario = UsuarioService.obtener(id);
+		int posicion = UsuarioService.obtenerPosicion(id);
+		
+		
 		// Comparamos los emails
-		if (!email.equalsIgnoreCase(UsuarioDAO_OLD.getListaUsuarios().get(posicion).getEmail())) {
+		if (!email.equalsIgnoreCase(usuario.getEmail())) {
 			// Si son diferentes entramos por aquí y comprobamos si existe (comprobacion =
 			// -1) o no (!= -1)
-			int comprobacion = new UsuarioService().comprobarEmail(email);
+			int comprobacion = UsuarioService.comprobarEmail(email);
 			if (comprobacion != -1) {
 				texto = "Email ya registrado.";
 				referencia = "/jsp/perfil_editable.jsp";
 			} else {
-				UsuarioDAO_OLD.editUser(posicion, nombre, apellidos, email, telefono);
+				UsuarioService.modificarUsuario(posicion, id, nombre, apellidos, email, telefono);
 			}
 		} else {
 			// Si los emails coincidian
-			UsuarioDAO_OLD.editUser(posicion, nombre, apellidos, email, telefono);
+			UsuarioService.modificarUsuario(posicion, id, nombre, apellidos, email, telefono);
 		}
 		// Seteamos los atributos para la nueva carga de los datos en pantalla
 		request.setAttribute("nombre", nombre);
 		request.setAttribute("apellidos", apellidos);
-		request.setAttribute("email", UsuarioDAO_OLD.getListaUsuarios().get(posicion).getEmail());
+		request.setAttribute("email", email);
 		request.setAttribute("telefono", tlf);
 		request.setAttribute("texto", texto);
 		request.getRequestDispatcher(referencia).forward(request, response);

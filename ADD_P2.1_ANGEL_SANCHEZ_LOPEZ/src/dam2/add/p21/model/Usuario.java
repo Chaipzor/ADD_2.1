@@ -1,6 +1,7 @@
 package dam2.add.p21.model;
 
 public class Usuario {
+	private int id;
 	private static int idGlobal = 0;
 	private String nombre;
 	private String apellidos;
@@ -8,18 +9,24 @@ public class Usuario {
 	private int telefono;
 	private String pass;
 	private boolean rol_admin;
-	private int id;
+	
+	private String idioma;
 
-	public Usuario(String nombre, String apellidos, String email, int telefono, String pass, boolean rol_admin) {
+	public Usuario(String nombre, String apellidos, String email, int telefono, String pass, boolean rol_admin, String idioma) {
 		super();
+		this.id = idGlobal;
+		idGlobal++;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
 		this.telefono = telefono;
 		this.pass = pass;
 		this.rol_admin = rol_admin;
-		this.id = idGlobal;
-		idGlobal++;
+		this.idioma = idioma;
+	}
+
+	public Usuario() {
+
 	}
 
 	public String getNombre() {
@@ -73,5 +80,22 @@ public class Usuario {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	public static void setIdGlobal(int idGlobal) {
+		Usuario.idGlobal = idGlobal+1;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+	
+	
 }

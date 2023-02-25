@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="dam2.add.p21.resourcebundle.MiResourceBundle"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,20 +30,30 @@
 							<div>
 								<a href="${pageContext.request.contextPath}/modificardatos"><button
 										class="login">
-										<i class="fa fa-sign-out"></i> Modificar datos
+										<i class="fa fa-sign-out"></i>
+										<%
+											out.println(MiResourceBundle.traductor("modificarDatos"));
+										%>
 									</button></a>
 							</div>
 							<div>
 								<a href="${pageContext.request.contextPath}/editarpass"><button
 										class="login">
-										<i class="fa fa-sign-out"></i> Modificar contraseña
+										<i class="fa fa-sign-out"></i>
+										<%
+											out.println(MiResourceBundle.traductor("modificarPass"));
+										%>
 									</button></a>
 							</div>
 						</div>
 					</div>
 					<div class="contenedor">
 						<div class="separador"></div>
-						<div class="titulo">PERFIL</div>
+						<div class="titulo">
+							<%
+								out.println(MiResourceBundle.traductor("perfil"));
+							%>
+						</div>
 						<div class="subtitulo">
 							<%
 								out.println(texto);
@@ -52,21 +64,30 @@
 								method="post" class="form form-login">
 								<div class="form-field">
 
-									<label for="password">CONTRASEÑA ACTUAL</label> <input
-										name="oldPass" id="login-password" type="password"
+									<label for="password">
+										<%
+											out.println(MiResourceBundle.traductor("pass"));
+										%>
+									</label> <input name="oldPass" id="login-password" type="password"
 										class="form-input" placeholder="Contraseña" required>
 								</div>
 								<div class="form-field">
 
-									<label for="password">NUEVA CONTRASEÑA</label> <input
-										name="newPass" id="login-password" type="password"
+									<label for="password">
+										<%
+											out.println(MiResourceBundle.traductor("newPass"));
+										%>
+									</label> <input name="newPass" id="login-password" type="password"
 										class="form-input" placeholder="Comprobación contraseña"
 										required>
 								</div>
 								<div class="form-field">
 
-									<label for="password">NUEVA CONTRASEÑA</label> <input
-										name="newPass2" id="login-password" type="password"
+									<label for="password">
+										<%
+											out.println(MiResourceBundle.traductor("newPass"));
+										%>
+									</label> <input name="newPass2" id="login-password" type="password"
 										class="form-input" placeholder="Comprobación contraseña"
 										required>
 								</div>

@@ -26,7 +26,9 @@
 
 				<div class="contenedor">
 					<div class="separador"></div>
-					<div class="titulo">REGISTRO</div>
+					<div class="titulo"><%
+				out.println(MiResourceBundle.traductor("registro"));
+			%></div>
 					<div class="subtitulo">
 						<%
 							out.println(texto);
@@ -37,36 +39,48 @@
 							method="post" class="form form-login">
 							<div class="form-field">
 
-								<label for="nombre">NOMBRE</label> <input name="nombre"
+								<label for="nombre"><%
+				out.println(MiResourceBundle.traductor("nombre"));
+			%></label> <input name="nombre"
 									id="username" type="text" class="form-input"
 									placeholder="Nombre" required>
 							</div>
 							<div class="form-field">
 
-								<label for="apellidos">APELLIDOS</label> <input name="apellidos"
+								<label for="apellidos"><%
+				out.println(MiResourceBundle.traductor("apellidos"));
+			%></label> <input name="apellidos"
 									id="apellidos" type="text" class="form-input"
 									placeholder="Apellidos" required>
 							</div>
 							<div class="form-field">
 
-								<label for="email">EMAIL</label> <input name="email" id="email"
+								<label for="email"><%
+				out.println(MiResourceBundle.traductor("email"));
+			%></label> <input name="email" id="email"
 									type="text" class="form-input" placeholder="Email" required>
 							</div>
 							<div class="form-field">
 
-								<label for="telefono">TELÉFONO</label> <input name="telefono"
+								<label for="telefono"><%
+				out.println(MiResourceBundle.traductor("telefono"));
+			%></label> <input name="telefono"
 									maxlength="9" id="telefono" type="text" class="form-input"
 									placeholder="Telefono" required>
 							</div>
 							<div class="form-field">
 
-								<label for="password">CONTRASEÑA</label> <input name="pass"
+								<label for="password"><%
+				out.println(MiResourceBundle.traductor("pass"));
+			%></label> <input name="pass"
 									id="login-password" type="password" class="form-input"
 									placeholder="Contraseña" required>
 							</div>
 							<div class="form-field">
 
-								<label for="password">CONTRASEÑA</label> <input name="pass2"
+								<label for="password"><%
+				out.println(MiResourceBundle.traductor("pass"));
+			%></label> <input name="pass2"
 									id="login-password" type="password" class="form-input"
 									placeholder="Comprobación contraseña" required>
 							</div>

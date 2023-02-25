@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dam2.add.p21.config.Conexion;
-import dam2.add.p21.dao.UsuarioDAO;
-import dam2.add.p21.dao.UsuarioDAO_OLD;
-import dam2.add.p21.dao.mysql.MySQLUsuarioDAO;
+import dam2.add.p21.dao.UsuarioDAOMemoria;
+import dam2.add.p21.dao.UsuarioDAOMySQL;
 import dam2.add.p21.model.Usuario;
 import dam2.add.p21.servicios.UsuarioService;
 
@@ -63,9 +62,10 @@ public class RegistroController extends HttpServlet {
 		int telefono = Integer.parseInt(request.getParameter("telefono"));
 		String pass = request.getParameter("pass");
 		String pass2 = request.getParameter("pass2");
+		String idioma = (String) request.getSession().getAttribute("idioma");
 
 		// Se comprueba el email introducido
-		int comprobacion = new UsuarioService().comprobarEmail(email);
+		int comprobacion = UsuarioService.comprobarEmail(email);
 		// Si ya estaba registrado
 		if (comprobacion != -1) {
 			texto = "Email ya registrado.";
@@ -73,28 +73,15 @@ public class RegistroController extends HttpServlet {
 		} // Si no existía
 		else {
 			// Se comprueba la doble contraseña
-			boolean comprobacionDoblePass = new UsuarioService().comprobacionDoblePass(pass, pass2);
+			boolean comprobacionDoblePass = UsuarioService.comprobacionDoblePass(pass, pass2);
 			if (!comprobacionDoblePass) {
 				texto = "Las contraseñas no coinciden.";
 			} else {
 				texto = "Usuario registrado.";
-				//UsuarioDAO_OLD.setListaUsuarios(new Usuario(nombre, apellidos, email, telefono, pass, false));
-				
-				try {
-					Connection conn = null;
-					conn = Conexion.getConexion();
-					Statement st = conn.createStatement();
-					UsuarioDAO usuario = new MySQLUsuarioDAO(conn);
-					usuario.insertar(new Usuario(nombre, apellidos, email, telefono, pass, false));
-					st.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				UsuarioService.crearUsuario(new Usuario(nombre, apellidos, email, telefono, pass, false, idioma));
 			}
 		}
-		ArrayList<Usuario> listaContactos = UsuarioDAO_OLD.getListaUsuariosNoAdmin();
-		request.getSession().setAttribute("listaContactos", listaContactos);
+		request.getSession().setAttribute("listaContactos", UsuarioService.obtenerTodosSinAdmin());
 		request.setAttribute("repetir", repetir);
 		request.setAttribute("texto", texto);
 		request.getRequestDispatcher(referencia).forward(request, response);

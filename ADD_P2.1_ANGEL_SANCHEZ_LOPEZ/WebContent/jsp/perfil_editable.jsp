@@ -81,26 +81,39 @@
 								class="form form-login">
 								<div class="form-field">
 
-									<label for="nombre">NOMBRE</label> <input name="nombre"
-										id="username" type="text" class="form-input"
-										value="<%out.println(nom);%>">
+									<label for="nombre">
+										<%
+											out.println(MiResourceBundle.traductor("nombre"));
+										%>
+									</label> <input name="nombre" id="username" type="text"
+										class="form-input" value="<%out.println(nom);%>">
 								</div>
 								<div class="form-field">
 
-									<label for="apellidos">APELLIDOS</label> <input
-										name="apellidos" id="apellidos" type="text" class="form-input"
-										value="<%out.println(apellidos);%>">
+									<label for="apellidos">
+										<%
+											out.println(MiResourceBundle.traductor("apellidos"));
+										%>
+									</label> <input name="apellidos" id="apellidos" type="text"
+										class="form-input" value="<%out.println(apellidos);%>">
 								</div>
 								<div class="form-field">
 
-									<label for="email">EMAIL</label> <input name="email" id="email"
-										type="text" class="form-input" value="<%out.println(email);%>">
+									<label for="email">
+										<%
+											out.println(MiResourceBundle.traductor("email"));
+										%>
+									</label> <input name="email" id="email" type="text" class="form-input"
+										value="<%out.println(email);%>">
 								</div>
 								<div class="form-field">
 
-									<label for="telefono">TELÉFONO</label> <input name="telefono"
-										maxlength="9" id="telefono" type="text" class="form-input"
-										value="<%out.println(telefono);%>">
+									<label for="telefono">
+										<%
+											out.println(MiResourceBundle.traductor("telefono"));
+										%>
+									</label> <input name="telefono" maxlength="9" id="telefono" type="text"
+										class="form-input" value="<%out.println(telefono);%>">
 								</div>
 								<div class="form-field">
 									<input type="submit" name="boton" value="Editar">
