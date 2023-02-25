@@ -11,12 +11,12 @@ public class UsuarioDAOMemoria implements iUsuarioDAO{
 		
 	private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>() {
 		{
-			add(new Usuario("Angel", "Sanchez Lopez", "chaip@gmail.com", 666555444, "1234", true, "es"));
-			add(new Usuario("Michael", "Jackson", "MJ@gmail.com", 111111111, "1234", false, "en"));
-			add(new Usuario("Paco", "Hernandez", "PH@gmail.com", 999999999, "1234", false, "es"));
-			add(new Usuario("A", "A", "A@gmail.com", 999999999, "1234", false, "es"));
-			add(new Usuario("B", "B", "B@gmail.com", 999999999, "1234", true, "es"));
-			add(new Usuario("C", "C", "C@gmail.com", 999999999, "1234", false, "es"));
+			add(new Usuario("Angel", "Sanchez Lopez", "chaip@gmail.com", 666555444, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", true, "es"));
+			add(new Usuario("Michael", "Jackson", "MJ@gmail.com", 111111111, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", false, "en"));
+			add(new Usuario("Paco", "Hernandez", "PH@gmail.com", 999999999, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", false, "es"));
+			add(new Usuario("A", "A", "A@gmail.com", 999999999, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", false, "es"));
+			add(new Usuario("B", "B", "B@gmail.com", 999999999, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", true, "es"));
+			add(new Usuario("C", "C", "C@gmail.com", 999999999, "GCUIhlNaWp7wmXsFAMVIpabN8S6VeKYRK5xNnDDsHTlcwg3Pa477A75rEX4gkBrE", false, "es"));
 		}
 	};
 
