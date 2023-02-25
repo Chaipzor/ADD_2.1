@@ -52,7 +52,8 @@ public class LoginController extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		// Comprobamos los datos
-		int posicion = UsuarioService.comprobarDatos(email, pass);
+		int id = UsuarioService.comprobarDatos(email, pass);
+		int posicion = UsuarioService.obtenerPosicion(id);
 		// Usuario no existe.
 		if (posicion == -1) {
 			texto = "El email no está dado de alta.";

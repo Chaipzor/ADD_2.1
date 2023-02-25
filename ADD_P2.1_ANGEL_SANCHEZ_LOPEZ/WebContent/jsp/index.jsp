@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@include file="./meta.jsp"%>
-<title>Practica 2.1 DII 2 Curso</title>
+<title>Practica 2.1 ADD 2 Curso</title>
 </head>
 <body>
 	<%@include file="./header.jsp"%>

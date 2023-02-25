@@ -18,6 +18,7 @@ import dam2.add.p21.dao.UsuarioDAOMemoria;
 import dam2.add.p21.dao.UsuarioDAOMySQL;
 import dam2.add.p21.model.Usuario;
 import dam2.add.p21.servicios.UsuarioService;
+import dam2.add.p21.util.EncriptarJasypt;
 
 /**
  * Servlet implementation class LoginController
@@ -78,6 +79,7 @@ public class RegistroController extends HttpServlet {
 				texto = "Las contraseñas no coinciden.";
 			} else {
 				texto = "Usuario registrado.";
+				pass = EncriptarJasypt.encriptar(pass);
 				UsuarioService.crearUsuario(new Usuario(nombre, apellidos, email, telefono, pass, false, idioma));
 			}
 		}

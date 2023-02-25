@@ -22,7 +22,8 @@ public class MiLog {
 		String path_log4j = path + "\\properties\\log4j.properties";
 
 		Properties p = new Properties();
-		// Set server log file location
+		// Intento guardar el archivo de log en la ruta relativa correspondiente sin éxito...
+		// Siempre se guarda en: C:\Program Files\eclipse
 		
 		try (FileInputStream fis = new FileInputStream(path_log4j)) {
 			p.load(fis);
@@ -36,13 +37,6 @@ public class MiLog {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		log.debug("DEBUG");
-		log.info("INFO");
-		log.warn("WARN");
-		log.error("ERROR");
-		log.fatal("FATAL");
-
 	}
 
 }
