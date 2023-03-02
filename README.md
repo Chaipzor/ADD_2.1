@@ -16,8 +16,11 @@ Almacena el idioma por defecto del usuario con el que cargará el programa, modi
 Además de las salidas por consola en el idioma seleccionado, se registrarán los accesos y uso de la aplicación mediante trazas en un fichero con la librería log4j. Su configuración se hará a través de un fichero de propiedades log4j.properties. Los datos de acceso a la base de datos deberán leerse de un fichero bbdd.properties. Los datos de conexión a utilizar para la base de datos deberán ser:
 
 servidor: localhost
+
 base de datos: p21
+
 usuario: root (sin contraseña)
+
 Todos los ficheros de propiedades utilizados en la aplicación deberán almacenarse dentro de una carpeta /properties (a excepción de los destinados a la internacionalización).
 
 Las contraseñas almacenadas deberán ir encriptadas, para ello puedes utilizar la librería jasypt o cualquier otra que consideres.
