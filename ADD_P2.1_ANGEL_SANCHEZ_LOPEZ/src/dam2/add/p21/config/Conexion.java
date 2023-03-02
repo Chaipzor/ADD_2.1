@@ -23,8 +23,11 @@ public class Conexion {
 
 	public static Connection getConexion() {
 		if (conexion == null) {
-			crearConexion();
-			Usuario.setIdGlobal(UsuarioService.getIdGlobal());
+			if(!crearConexion()) {
+				System.out.println("Problema al crear la bbdd.");
+			} else {
+				Usuario.setIdGlobal(UsuarioService.getIdGlobal());
+			}
 		}
 		return conexion;
 	}
